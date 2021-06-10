@@ -2,9 +2,9 @@
 
 //fetch.php
 
-$connect = new PDO('mysql:host=localhost;dbname=test', 'root', '');
-
-$query = "SELECT * FROM tbl_customer ORDER BY CustomerID DESC";
+$connect = new pdo_mysql('mysql:host=localhost;dbname=test', 'root', '');
+print "foo is $connect"
+$query = "SELECT * FROM tbl_customer ORDER BY id DESC";
 
 $statement = $connect->prepare($query);
 
@@ -18,3 +18,8 @@ while($row = $statement->fetch(PDO::FETCH_ASSOC))
 echo json_encode($data);
 
 ?>
+  <!-- HOST: "localhost",
+  USER: "root",
+  PASSWORD: "",
+  DB: "latihan",
+  dialect: "mysql", -->

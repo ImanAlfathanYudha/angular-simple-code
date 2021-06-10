@@ -52,6 +52,7 @@ var app = angular.module('customerApp', ['datatables']);
 app.controller('customerController', function($scope, $http){
 	$http.get('fetch.php').success(function(data, status, headers, config){
 		$scope.customers = data;
+		console.log("Tes $scope.customers ",$scope.customers)
 	});
 });
 
