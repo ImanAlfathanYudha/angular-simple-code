@@ -14,37 +14,37 @@
 			<h3 align="center">Angular simple app-Login Page</h3>
 			<br />
 			<div class="container">
-			<form>
+			<form ng-submit="addCustomers()">
 			<div class="row">
 					<label for="uname"><b>Username</b></label>
-			    	<input type="text" placeholder="Enter Username" name="uname" required>	
+			    	<input type="text" placeholder="Enter Username" name="uname" value="{{model.customer.uname}}" required>	
 				</div>
 				<div class="row">
 					<br>
 				</div>
 			    <div class="row">
 			    	<label for="firstname"><b>First Name</b></label>
-			    	<input type="text" placeholder="enter first name" name="firstname" required>	
+			    	<input type="text" placeholder="enter first name" name="firstname" value="{{model.customer.firstname}}" required>	
 			    </div>
 			    <div class="row">
 			    	<label for="lastname"><b>Last Name</b></label>
-			    	<input type="text" placeholder="enter first name" name="lastname" required>	
+			    	<input type="text" placeholder="enter first name" name="lastname"  value="{{model.customer.lastname}}" required>	
 			    </div>
 			    <div class="row">
 			    	<label for="email">Email</b></label>
-			    	<input type="email" placeholder="enter email" name="email" required>	
+			    	<input type="email" placeholder="enter email" name="email"  value="{{model.customer.email}}" required>	
 			    </div>
 			    <div class="row">
 			    	<label for="birthdate"><b>Birth Date</b></label>
-			    	<input type="date" placeholder="enter basic salary" name="birthdate" required>	
+			    	<input type="date" placeholder="enter basic salary" name="birthdate"  value="{{model.customer.birthdate}}" required>	
 			    </div>
 			    <div class="row">
 			    	<label for="basicsalary"><b>Basic Salary</b></label>
-			    	<input type="number" placeholder="enter basic salary" name="basicsalary" required>	
+			    	<input type="number" placeholder="enter basic salary" name="basicsalary" value="{{model.customer.basicsalary}}" required>	
 				</div>
 				<div class="row">
-			    	<label for="basicsalary"><b>Basic Salary</b></label>
-			    	<input type="number" placeholder="enter basic salary" name="basicsalary" required>	
+			    	<label for="basicsalary"><b>Group</b></label>
+			    	<input type="number" placeholder="enter basic salary" name="group"  value="{{model.customer.group}}" required>	
 			    </div>
 			    <div class="row">
 					<br>
@@ -62,9 +62,12 @@
 var app = angular.module('customerApp', ['datatables']);
 
 app.controller('customerController', function($scope, $http){
-	$http.get('fetch.php').success(function(data, status, headers, config){
-		$scope.customers = data;
-	});
+	$scope.model.customer = {};
+	$scope.addCustomers = function (){
+		$http.post('add.php', $scope.model.customer).success(function(data, status, headers, config){
+		
+	});	
+	}
 });
 
 </script>

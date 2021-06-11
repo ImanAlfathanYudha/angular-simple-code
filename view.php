@@ -4,16 +4,13 @@
 
 $connect = new pdo_mysql('mysql:host=localhost;dbname=test', 'root', '');
 
-$query = "SELECT * FROM tbl_customer ORDER BY id DESC";
+$query = "SELECT * FROM tbl_customer where tbl_customer.id= ?id limit 1";
 
 $statement = $connect->prepare($query);
 
 $statement->execute();
 
-while($row = $statement->fetch(PDO::FETCH_ASSOC))
-{
-	$data[] = $row;
-}
+$data = $statement;
 
 echo json_encode($data);
 
